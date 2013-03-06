@@ -22,16 +22,43 @@ public class Quicksort {
 
     // quicksort the subarray from a[lo] to a[hi]
     private void sort(Comparable[] a, int lo, int hi) {
-	// complete your method here
+    	
+        if (lo >= hi) 
+        	return;
+        
+        int pivot = partition(a, lo, hi);
+
+        sort(a, lo, pivot);
+        sort(a, pivot+1, hi);
     }
 
     // partition the subarray a[lo .. hi] by returning an index j
     // so that a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
     private int partition(Comparable[] a, int lo, int hi) {
-	// complete your method here
+
+    	Comparable pivot = a[((hi-1)-lo)/2];
+    	
+    	int l = lo,h = hi;
+    	pivot = a[lo];
+    	
+    	while (true) {
+    		System.out.println(pivot);
+    		
+    		while (a[h].compareTo(pivot) >= 0 && l < h) 	
+    			h--;
+    		while (a[l].compareTo(pivot) < 0 && l < h) 
+    			l++;
+    		
+    		if (l < h) {
+    			Comparable temp = a[l];
+    			a[l] = a[h];
+    			a[h] = temp;
+    		}
+    		else return h;
+    	}
     }
 
-	
+
     // sort data from a file and store them to a file
     // useful classes:
     // java.io.BufferedReader
@@ -43,15 +70,17 @@ public class Quicksort {
 	// In the output data file, you should write only one word per line. 
 	// To separate lines, use a linefeed charactor, "\n" at the end of the line.
     public void quicksortToFile(String file_input, String file_output){
-    	String[] words = new String[19911];
+    	
+    	Comparable[] words = new Comparable[19911];
+    	
     	storeInput(file_input,words);
-    	//
-    	//Sort array here.
-    	//
+    	
+    	sort(words);
+
     	writeOut(file_output,words);
     }
     
-    private void storeInput(String file_input,String[] store){
+    private void storeInput(String file_input,Comparable[] store){
     	Scanner fileScanner = null;
     	try{fileScanner = new Scanner(new File(file_input));}	
     	catch (FileNotFoundException e){e.printStackTrace();}
@@ -64,7 +93,7 @@ public class Quicksort {
     	fileScanner.close();
     }
 
-    private void writeOut(String file_output,String[] store){
+    private void writeOut(String file_output,Comparable[] store){
     	try {
     		BufferedWriter out = new BufferedWriter(new FileWriter(new File(file_output)));
     		for(int i = 0; i < store.length;i++)
