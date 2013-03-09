@@ -42,7 +42,7 @@ public class Quicksort {
     	pivot = a[lo];
     	
     	while (true) {
-    		System.out.println(pivot);
+    		//System.out.println(pivot);
     		
     		while (a[h].compareTo(pivot) >= 0 && l < h) 	
     			h--;
@@ -80,7 +80,7 @@ public class Quicksort {
     	writeOut(file_output,words);
     }
     
-    private void storeInput(String file_input,Comparable[] store){
+    public void storeInput(String file_input,Comparable[] store){
     	Scanner fileScanner = null;
     	try{fileScanner = new Scanner(new File(file_input));}	
     	catch (FileNotFoundException e){e.printStackTrace();}

@@ -7,7 +7,7 @@
  */
 import java.io.*;
 import java.util.*;
-//Added a comment to test committing something from eclipse.-Steve
+
 public class Autocomplete {
     // this is a constructor of this class.
     public Autocomplete(){
@@ -34,7 +34,40 @@ public class Autocomplete {
     // Step 2: sort them with the quicksort method
     // Step 3: find the list and return it
     public String [] listCandidates(String data_file, int max_count, String inputString){	     
-	// Complete your method
+    	Comparable[] words = new Comparable[19911];
+    	Comparable[] matches = new String[max_count];
+    	int numMatches = 0;
+    	
+    	Quicksort qs = new Quicksort();
+    	qs.storeInput(data_file, words);
+    	qs.sort(words);
+
+    	for(int i = 0; i < words.length;i++){
+    		if(doesWordMatch(inputString,(String)words[i]) && numMatches < max_count){
+    			matches[numMatches] = words[i];
+    			numMatches++;
+    		}
+    	}
+
+    	return (String[])matches;	
     }
+    
+    //Return true if little word is first part (or entire part) of parameter 'word'.
+    private boolean doesWordMatch(String little, String word){
+
+    	if(word.length() >= little.length()){
+    		for(int i = 0; i < little.length();i++){
+    			if(little.toLowerCase().charAt(i) == word.toLowerCase().charAt(i)){
+    			}
+    			else//Returns false here if words don't match(checking each character).
+    				return false;
+    		}
+    	}else{//Returns false here if your input is larger then word.
+    		return false;
+    	}
+    	
+    	return true;
+    }
+    
 
 }
