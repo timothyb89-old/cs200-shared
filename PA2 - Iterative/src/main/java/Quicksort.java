@@ -20,25 +20,27 @@ public class Quicksort {
 		if (a == null || a.length <= 1) {
 			return;
 		}
-		
+
 		//Iterative part here
 		boolean[] sorted = new boolean[a.length];
 		int i, k, numSorted = 0;
 
 		while (numSorted < a.length) {
 
-			for (i = 0; i < a.length; i++)
+			for (i = 0; i < a.length; i++) {
 				if (!sorted[i]) {
-					for (k = i; (k < a.length-1) && (!sorted[k+1]); k++){}
-					sorted[i = partition(a,i,k)] = true;
+					for (k = i; (k < a.length - 1) && (!sorted[k + 1]); k++) {
+					}
+					sorted[i = partition(a, i, k)] = true;
 					numSorted++;
 				}
+			}
 
 		}
 	}
 
 	// quicksort the subarray from a[lo] to a[hi]
-	private void sort(Comparable[] a, int lo, int hi) {
+	public void sort(Comparable[] a, int lo, int hi) {
 		if (lo >= hi) {
 			return;
 		}
@@ -51,7 +53,7 @@ public class Quicksort {
 
 	// partition the subarray a[lo .. hi] by returning an index j
 	// so that a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
-	private int partition(Comparable[] a, int lo, int hi) {
+	public int partition(Comparable[] a, int lo, int hi) {
 		int pivotIndex = lo + ((hi - 1) - lo) / 2;
 		Comparable pivotValue = a[pivotIndex];
 
@@ -108,7 +110,7 @@ public class Quicksort {
 		Scanner fileScanner = null;
 		try {
 			fileScanner = new Scanner(new File(file_input));
-			
+
 			// linked list for fast adding - we'll convert to an array later
 			List<String> ret = new LinkedList<String>();
 
@@ -135,5 +137,4 @@ public class Quicksort {
 			e.printStackTrace();
 		}
 	}
-
 }
