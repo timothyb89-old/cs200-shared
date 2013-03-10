@@ -5,8 +5,6 @@
  * specified word.
  *
  */
-import java.io.*;
-import java.util.*;
 
 public class Autocomplete {
     // this is a constructor of this class.
@@ -34,12 +32,11 @@ public class Autocomplete {
     // Step 2: sort them with the quicksort method
     // Step 3: find the list and return it
     public String [] listCandidates(String data_file, int max_count, String inputString){	     
-    	Comparable[] words = new Comparable[19911];
     	Comparable[] matches = new String[max_count];
     	int numMatches = 0;
     	
     	Quicksort qs = new Quicksort();
-    	qs.storeInput(data_file, words);
+    	Comparable[] words = qs.storeInput(data_file);
     	qs.sort(words);
 
     	for(int i = 0; i < words.length;i++){
