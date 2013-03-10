@@ -25,7 +25,7 @@ public class Quicksort {
 	}
 
 	// quicksort the subarray from a[lo] to a[hi]
-	private void sort(Comparable[] a, int lo, int hi) {
+	public void sort(Comparable[] a, int lo, int hi) {
 		if (lo >= hi) {
 			return;
 		}
@@ -38,7 +38,7 @@ public class Quicksort {
 
 	// partition the subarray a[lo .. hi] by returning an index j
 	// so that a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
-	private int partition(Comparable[] a, int lo, int hi) {
+	public int partition(Comparable[] a, int lo, int hi) {
 		int pivotIndex = lo + ((hi - 1) - lo) / 2;
 		Comparable pivotValue = a[pivotIndex];
 
