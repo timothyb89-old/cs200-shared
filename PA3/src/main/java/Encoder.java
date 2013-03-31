@@ -1,6 +1,7 @@
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
 
@@ -86,6 +87,12 @@ public class Encoder {
 		dictionary = new HashMap<Character, String>();
 		
 		dict("", (HuffmanTreeNode) ht.getRootItem());
+		
+		// update the codes in TableItem
+		// we don't use them but the test code does
+		for (Entry<Character, String> e : dictionary.entrySet()) {
+			freqTable.getItem(e.getKey()).setCode(e.getValue());
+		}
 	}
 	
 	private void dict(String path, HuffmanTreeNode node) {

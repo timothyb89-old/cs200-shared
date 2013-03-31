@@ -93,6 +93,16 @@ public class HuffmanFrequencyTable {
 	public TableItem getItem(int index) {
 		return table.get(index);
 	}
+	
+	public TableItem getItem(char letter) {
+		for (TableItem t : table) {
+			if (t.getInputChar() == letter) {
+				return t;
+			}
+		}
+		
+		return null;
+	}
 
 	// stores a new code in the item that has same character specified in the inputChar
 	public void setCode(char inputChar, String newCode) {
