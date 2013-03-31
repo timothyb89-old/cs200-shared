@@ -10,6 +10,7 @@
  *
  * Code is created by Huffman coding algorithm Please note that the code is
  * stored as a String object.
+ * @author Steven Burrell
  */
 import java.util.LinkedList;
 

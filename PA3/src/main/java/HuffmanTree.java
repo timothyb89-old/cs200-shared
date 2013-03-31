@@ -5,6 +5,7 @@
  * This class is an implementation of Tree.java interface You should implement
  * all of the methods in the Tree interface. If you need to add more methods,
  * please add your own methods.
+ * @author Steven Burrell, Tim Buckley
  */
 public class HuffmanTree implements Tree {
 

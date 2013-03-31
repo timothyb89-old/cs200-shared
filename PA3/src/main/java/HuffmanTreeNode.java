@@ -7,6 +7,7 @@
  * methods, please add your own methods. Since this node will store a java
  * character and frequencies for creating a list of Huffman code, you can add
  * member methods related to the functionality.
+ * @author Steven Burrell, Tim Buckley
  */
 public class HuffmanTreeNode implements TreeNode {
 

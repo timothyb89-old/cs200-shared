@@ -15,7 +15,7 @@ import java.util.PriorityQueue;
  * the frequency table 3. Create a list of code based on the Huffman tree
  * created in the step 2. And store codes in the frequency table 4. Encode
  * user's input string based on the code in the frequency table
- *
+ * @author Tim Buckley
  */
 public class Encoder {
 

@@ -10,6 +10,7 @@
  * path from the root and convert the bit string to a charactor accordingly by
  * looking up the frequency table. 6. Repeat step 1 ~ 5 until there is no bit
  * item existing in the bit sequence  *
+ * @author Steven Burrell
  */
 public class Decoder {
 
