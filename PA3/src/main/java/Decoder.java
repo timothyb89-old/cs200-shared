@@ -46,7 +46,7 @@ public class Decoder {
     			curr = (HuffmanTreeNode)curr.getRight();
     		
     		//If no children exist, concatenate current nodes character to output and set curr back to root.
-    		else if(curr.getLeft() == null && curr.getRight() == null){
+    		if(curr.getLeft() == null && curr.getRight() == null){
     			output.concat(Character.toString(curr.getLetter()));
     			curr = (HuffmanTreeNode)ht.getRootItem();
     		}
