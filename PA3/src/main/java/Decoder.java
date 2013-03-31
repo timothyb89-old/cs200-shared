@@ -32,8 +32,28 @@ public class Decoder {
     // Hufman code, this method should return a String "AB"
 
     public String decode(){
-	// add your code here.
-
+    	String output = "";
+    	HuffmanTreeNode curr = (HuffmanTreeNode)ht.getRootItem();
+    			
+    	for(int i = 0 ; i < encodedbits.length();i++)
+    	{
+    		//Checks before going left
+    		if(Character.toString(encodedbits.charAt(i)) == "0" && curr.getLeft() != null)
+    			curr = (HuffmanTreeNode)curr.getLeft();
+    		
+    		//Checks before going right
+    		else if (Character.toString(encodedbits.charAt(i)) == "1" && curr.getRight() != null)
+    			curr = (HuffmanTreeNode)curr.getRight();
+    		
+    		//If no children exist, concatenate current nodes character to output and set curr back to root.
+    		else if(curr.getLeft() == null && curr.getRight() == null){
+    			output.concat(Character.toString(curr.getLetter()));
+    			curr = (HuffmanTreeNode)ht.getRootItem();
+    		}
+    			
+    	}
+    	
+    	return output;
     }
       
 }
