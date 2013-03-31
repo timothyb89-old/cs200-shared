@@ -1,37 +1,42 @@
+
 /**
- *  TreeNode.java
+ * TreeNode.java
  *
- *  interface for a node of a binary tree structure
+ * interface for a node of a binary tree structure
  *
- *  CS200 Algorithms and Data Structures 
- *  Colorado State University
- *  Spring 2013
+ * CS200 Algorithms and Data Structures Colorado State University Spring 2013
  *
  */
-interface TreeNode extends Comparable <TreeNode> {
+public interface TreeNode extends Comparable<TreeNode> {
 
-    /** attaches a right child to this node */
-    void attachRight(TreeNode newRightNode);
+	/**
+	 * attaches a right child to this node
+	 */
+	public void attachRight(TreeNode newRightNode);
 
+	/**
+	 * attaches a left child to this node
+	 */
+	public void attachLeft(TreeNode newLeftNode);
 
-    /** attaches a left child to this node */
-    void attachLeft(TreeNode newLeftNode);
+	/**
+	 * detaches the left child and returns the detached node
+	 */
+	public TreeNode detachLeft();
 
+	/**
+	 * detaches the right child and returns the detached node
+	 */
+	public TreeNode detachRight();
 
-    /** detaches the left child and returns the detached node */
-    TreeNode detachLeft();
+	/**
+	 * returns the right child of thid node
+	 */
+	public TreeNode getRight();
 
-
-    /** detaches the right child and returns the detached node */
-    TreeNode detachRight();
-
-
-    /** returns the right child of thid node */
-    TreeNode getRight();
-
-
-    /** returns the left child of this node */
-    TreeNode getLeft();
-
+	/**
+	 * returns the left child of this node
+	 */
+	public TreeNode getLeft();
+	
 }
-

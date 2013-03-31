@@ -9,7 +9,7 @@
  *
  */
 
-interface Tree{
+public interface Tree{
     /** makes this tree empty */
     void makeEmpty();
 
@@ -45,4 +45,5 @@ interface Tree{
 
     /** detaches the right child subtree, and returns the detached subtree */
     Tree detachRightSubtree();
+	
 }

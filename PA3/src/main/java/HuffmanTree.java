@@ -1,88 +1,113 @@
+
 /**
  * HuffmanTree.java
  *
- * This class is an implementation of Tree.java interface
- * You should implement all of the methods in the Tree interface.
- * If you need to add more methods, please add your own methods.
+ * This class is an implementation of Tree.java interface You should implement
+ * all of the methods in the Tree interface. If you need to add more methods,
+ * please add your own methods.
  */
+public class HuffmanTree implements Tree {
 
+	private TreeNode rootNode = null;
 
-public class HuffmanTree implements Tree{
-    HuffmanTreeNode rootnode = null;
-    
-    public HuffmanTree(HuffmanTreeNode _rootnode){
-		this.rootnode = _rootnode;
-    }
-    // implement Tree interface here
-    // you can add main method for your unit testing
+	public HuffmanTree(TreeNode rootNode) {
+		this.rootNode = rootNode;
+	}
+	
+	// implement Tree interface here
+	// you can add main method for your unit testing
 
 	@Override
 	public void makeEmpty() {
-		rootnode = null;
+		rootNode = null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return rootnode == null;
+		return rootNode == null;
 	}
 
 	@Override
 	public TreeNode getRootItem() {
-		return rootnode;
+		return rootNode;
 	}
 
 	@Override
-	public void setRootItem(TreeNode newRootItem) {
-		// TODO Auto-generated method stub
-		
+	public void setRootItem(TreeNode rootNode) {
+		this.rootNode = rootNode;
 	}
 
 	@Override
 	public void attachLeft(TreeNode newLeft) {
-		// TODO Auto-generated method stub
-		
+		rootNode.attachLeft(newLeft);
 	}
 
 	@Override
 	public void attachRight(TreeNode newRight) {
-		// TODO Auto-generated method stub
-		
+		rootNode.attachRight(newRight);
 	}
 
 	@Override
 	public void attachLeftSubtree(Tree newLeft) {
-		// TODO Auto-generated method stub
-		
+		// "best guess" implementation, not 100% clear what these methods should
+		// actually do
+		rootNode.attachLeft(newLeft.getRootItem());
 	}
 
 	@Override
 	public void attachRightSubtree(Tree newRight) {
-		// TODO Auto-generated method stub
-		
+		rootNode.attachRight(newRight.getRootItem());
 	}
 
 	@Override
 	public TreeNode detachLeft() {
-		// TODO Auto-generated method stub
-		return null;
+		return rootNode.detachLeft();
 	}
 
 	@Override
 	public TreeNode detachRight() {
-		// TODO Auto-generated method stub
-		return null;
+		return rootNode.detachRight();
 	}
 
 	@Override
 	public Tree detachLeftSubtree() {
-		// TODO Auto-generated method stub
-		return null;
+		// this doesn't really make sense, but oh well
+		return new HuffmanTree(rootNode.detachLeft());
 	}
 
 	@Override
 	public Tree detachRightSubtree() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HuffmanTree(rootNode.detachRight());
+	}
+	
+	/**
+	 * Calculates the total weight for this tree. The weight is the combined
+	 * frequency of all of the child nodes.
+	 * @return the weight of this tree
+	 */
+	public int getWeight() {
+		return ((HuffmanTreeNode) rootNode).getWeight();
 	}
 
+	/**
+	 * Exports this tree to a dot string. Using the `dot` utility from GraphViz,
+	 * the output of this method can be used to generate a graphical
+	 * representation of this tree.
+	 * @return a dot string
+	 */
+	public String exportDot() {
+		StringBuilder b = new StringBuilder();
+
+		b.append("digraph HuffmanTree {\n");
+		
+		if (rootNode instanceof HuffmanTreeNode) {
+			HuffmanTreeNode node = (HuffmanTreeNode) rootNode;
+			b.append(node.dotString());
+		}
+		
+		b.append("}");
+		
+		return b.toString();
+	}
+	
 }
